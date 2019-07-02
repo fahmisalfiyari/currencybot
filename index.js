@@ -9,7 +9,13 @@ const WizardScene   = require('telegraf/scenes/wizard');
 const Converter     = require("./api/currency-converter"); // Currency converter code
 
 //define bot_token
-const bot = new Telegraf('855084150:AAFnbdTSo3RnZLwcDJqw2YF4zMN-AO1tcIc')
+// const bot = new Telegraf('855084150:AAFnbdTSo3RnZLwcDJqw2YF4zMN-AO1tcIc')
+const bot   = new Telegraf(process.env.BOT_TOKEN); //get the token from env variable
+const URL   = process.env.URL // get the Heroku URL for hosting
+const PORT  = process.env.PORT || 2000;
+
+bot.telegram.setWebhook(`${URL}bot${BOT_TOKEN}`);
+bot.startWebhook(`/bot${BOT_TOKEN}`, null, PORT);
 
 //Start bot
 bot.start((ctx) => 
@@ -106,4 +112,4 @@ const currencyConverter = new WizardScene(
 const stage = new Stage([currencyConverter], { default: "currency_converter" });
 bot.use(session());
 bot.use(stage.middleware());
-bot.startPolling()
+// bot.startPolling()
