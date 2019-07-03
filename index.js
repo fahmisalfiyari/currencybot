@@ -126,3 +126,4 @@ bot.hears("Hello",({reply}) => reply('Hello! What\'s up?'))
 bot.hears("Hi",({reply}) => reply('Hello! What\'s up?'))
 
 bot.hears(/.*/, ({ match, reply }) => reply(`I really wish i could understand what "${match}" means
+As for now you can use /convert to make me convert currencies`));
