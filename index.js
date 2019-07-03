@@ -9,16 +9,16 @@ const WizardScene   = require('telegraf/scenes/wizard');
 const Converter     = require("./api/currency-converter"); // Currency converter code
 
 //define bot_token
-// const bot = new Telegraf('855084150:AAFnbdTSo3RnZLwcDJqw2YF4zMN-AO1tcIc')
-const bot = new Telegraf(process.env.BOT_TOKEN); // Get the token from the environment variable
+const bot = new Telegraf('855084150:AAFnbdTSo3RnZLwcDJqw2YF4zMN-AO1tcIc')
+// const bot = new Telegraf(process.env.BOT_TOKEN); // Get the token from the environment variable
 
-const URL = process.env.URL; // get the Heroku config var URL
-const BOT_TOKEN = process.env.BOT_TOKEN || ""; // get Heroku config var BOT_TOKEN
-const PORT = process.env.PORT || 2000;
+// const URL = process.env.URL; // get the Heroku config var URL
+// const BOT_TOKEN = process.env.BOT_TOKEN || ""; // get Heroku config var BOT_TOKEN
+// const PORT = process.env.PORT || 2000;
 
 // Config the webhook for heroku
-bot.telegram.setWebhook(`${URL}bot${BOT_TOKEN}`);
-bot.startWebhook(`/bot${BOT_TOKEN}`, null, PORT);
+// bot.telegram.setWebhook(`${URL}bot${BOT_TOKEN}`);
+// bot.startWebhook(`/bot${BOT_TOKEN}`, null, PORT);
 
 //Start bot
 bot.start((ctx) => 
@@ -115,11 +115,11 @@ const currencyConverter = new WizardScene(
 const stage = new Stage([currencyConverter], { default: "currency_converter" });
 bot.use(session());
 bot.use(stage.middleware());
-// bot.startPolling()
+
 
 // Start convert action
-bot.command("convert",  enter("currency_converter"));
-bot.action("CONVERT_CURRENCY",  enter("currency_converter"));
+// bot.command("convert",  enter("currency_converter"));
+// bot.action("CONVERT_CURRENCY",  enter("currency_converter"));
 
 // Matching any input and default known inputs
 bot.hears("Hello",({reply}) => reply('Hello! What\'s up?'))
@@ -127,3 +127,5 @@ bot.hears("Hi",({reply}) => reply('Hello! What\'s up?'))
 
 bot.hears(/.*/, ({ match, reply }) => reply(`I really wish i could understand what "${match}" means
 As for now you can use /convert to make me convert currencies`));
+
+bot.startPolling()
