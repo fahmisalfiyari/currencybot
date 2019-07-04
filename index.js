@@ -9,11 +9,11 @@ const WizardScene   = require('telegraf/scenes/wizard');
 const Converter     = require("./api/currency-converter"); // Currency converter code
 
 //define bot_token
-const bot = new Telegraf('855084150:AAFnbdTSo3RnZLwcDJqw2YF4zMN-AO1tcIc')
-// const bot = new Telegraf(process.env.BOT_TOKEN); // Get the token from the environment variable
+// const bot = new Telegraf('855084150:AAFnbdTSo3RnZLwcDJqw2YF4zMN-AO1tcIc')
+const bot = new Telegraf(process.env.BOT_TOKEN); // Get the token from the environment variable
 
-// const URL = process.env.URL; // get the Heroku config var URL
-// const BOT_TOKEN = process.env.BOT_TOKEN || ""; // get Heroku config var BOT_TOKEN
+// const URL = process.env.URL; // get the  config var URL
+const BOT_TOKEN = process.env.BOT_TOKEN || ""; // get config var BOT_TOKEN
 // const PORT = process.env.PORT || 2000;
 
 // Config the webhook for heroku
